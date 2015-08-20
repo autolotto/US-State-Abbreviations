@@ -26,11 +26,12 @@ static NSDictionary *stateAbbreviationsMap = nil;
 {
     NSString *upperAbbr = [self uppercaseString];
     
-    for (NSString *abbreviation in [self.stateAbbreviationsMap allValues]) {
-        if ([abbreviation isEqualToString:upperAbbr]) {   
-	    return [[self.stateAbbreviationsMap objectForKey:upperAbbr] capitalizedString];
-	}
+    for (NSString *state in [self.stateAbbreviationsMap allKeys]) {
+        NSString *abbreviation = [self.stateAbbreviationsMap objectForKey:state];
+        if ([abbreviation isEqualToString:upperAbbr])
+            return [state capitalizedString];
     }
+    
     return nil;
 }
 @end
