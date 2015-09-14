@@ -34,4 +34,21 @@ static NSDictionary *stateAbbreviationsMap = nil;
     
     return nil;
 }
+
+- (NSString *) stateAbbreviation
+{
+    if ([self length] == 2)
+        return [self uppercaseString];
+    
+    return [self stateAbbreviationFromFullName];
+}
+
+- (NSString *) stateFullName
+{
+    if ([self length] == 2)
+        return [self stateFullNameFromAbbreviation];
+    
+    return [self capitalizedString];
+}
+
 @end
