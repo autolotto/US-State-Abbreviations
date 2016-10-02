@@ -4,6 +4,7 @@
 //  Copyright (c) 2013 Norman Harebottle III. All rights reserved.
 
 #import "NSString+USStateMap.h"
+#import "USStateAbbreviations.h"
 
 @implementation NSString (USStateMap)
 
@@ -11,7 +12,7 @@ static NSDictionary *stateAbbreviationsMap = nil;
 - (NSDictionary *)stateAbbreviationsMap 
 {
     if (stateAbbreviationsMap == nil) {
-        NSString *plist = [[NSBundle mainBundle] pathForResource:@"USStateAbbreviations" ofType:@"plist"];
+        NSString *plist = [[NSBundle bundleForClass: USStateAbbreviations.class] pathForResource:@"USStateAbbreviations" ofType:@"plist"];
         stateAbbreviationsMap = [[NSDictionary alloc] initWithContentsOfFile:plist];
     }
     return stateAbbreviationsMap;
